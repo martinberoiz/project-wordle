@@ -1,6 +1,12 @@
 import React from "react";
+import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
-function InputGuess({ guessedWords, setGuessedWords }) {
+function InputGuess({
+  guessedWords,
+  setGuessedWords,
+  numGuesses,
+  setNumGuesses,
+}) {
   [guess, setGuess] = React.useState("");
 
   return (
@@ -12,11 +18,13 @@ function InputGuess({ guessedWords, setGuessedWords }) {
           return;
         }
         setGuess("");
-        const newGuessedWords = [
-          ...guessedWords,
-          { word: guess, id: crypto.randomUUID() },
-        ];
+        if (numGuesses >= NUM_OF_GUESSES_ALLOWED) {
+          return;
+        }
+        const newGuessedWords = [...guessedWords];
+        newGuessedWords[numGuesses] = { word: guess, id: numGuesses };
         setGuessedWords(newGuessedWords);
+        setNumGuesses(numGuesses + 1);
       }}
     >
       <label htmlFor="guess-input">Enter guess:</label>
