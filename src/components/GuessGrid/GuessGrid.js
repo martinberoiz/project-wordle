@@ -2,12 +2,14 @@ import React from "react";
 
 import Guess from "../Guess";
 
-function GuessGrid({ guessedWords }) {
+function GuessGrid({ guessedWords, answer }) {
   return (
     <div className="guess-results">
       {guessedWords.map(({ id, word }) => {
         return (
-          <Guess key={id}>{word}</Guess>
+          <Guess key={id} answer={answer}>
+            {word}
+          </Guess>
         );
       })}
     </div>

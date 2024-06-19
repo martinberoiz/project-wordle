@@ -12,14 +12,14 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  const initialGuesses = range(NUM_OF_GUESSES_ALLOWED).map(i => {
+  const initialGuesses = range(NUM_OF_GUESSES_ALLOWED).map((i) => {
     return { word: "", id: i };
   });
   [guessedWords, setGuessedWords] = React.useState(initialGuesses);
   [numGuesses, setNumGuesses] = React.useState(0);
   return (
     <>
-      <GuessGrid guessedWords={guessedWords} />
+      <GuessGrid guessedWords={guessedWords} answer={answer} />
       <InputGuess
         guessedWords={guessedWords}
         setGuessedWords={setGuessedWords}
