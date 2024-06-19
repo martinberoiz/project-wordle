@@ -12,8 +12,8 @@ console.info({ answer });
 
 function Game() {
   [guessedWords, setGuessedWords] = React.useState([
-    { guess: "money", id: crypto.randomUUID() },
-    { guess: "talks", id: crypto.randomUUID() },
+    { word: "money", id: crypto.randomUUID() },
+    { word: "talks", id: crypto.randomUUID() },
   ]);
   return (
     <>

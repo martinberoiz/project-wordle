@@ -14,7 +14,7 @@ function InputGuess({ guessedWords, setGuessedWords }) {
         setGuess("");
         const newGuessedWords = [
           ...guessedWords,
-          { guess: guess, id: crypto.randomUUID() },
+          { word: guess, id: crypto.randomUUID() },
         ];
         setGuessedWords(newGuessedWords);
       }}
