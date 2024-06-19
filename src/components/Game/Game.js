@@ -3,7 +3,7 @@ import React from "react";
 import { sample } from "../../utils";
 import { WORDS } from "../../data";
 import InputGuess from "../InputGuess";
-import GuessHistory from "../GuessHistory";
+import GuessGrid from "../GuessGrid";
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -11,16 +11,16 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  [guessHistory, setGuessHistory] = React.useState([
+  [guessedWords, setGuessedWords] = React.useState([
     { guess: "money", id: crypto.randomUUID() },
     { guess: "talks", id: crypto.randomUUID() },
   ]);
   return (
     <>
-      <GuessHistory guessHistory={guessHistory} />
+      <GuessGrid guessedWords={guessedWords} />
       <InputGuess
-        guessHistory={guessHistory}
-        setGuessHistory={setGuessHistory}
+        guessedWords={guessedWords}
+        setGuessedWords={setGuessedWords}
       />
     </>
   );

@@ -1,9 +1,9 @@
 import React from "react";
 
-function GuessHistory({ guessHistory }) {
+function GuessGrid({ guessedWords }) {
   return (
     <div className="guess-results">
-      {guessHistory.map((g, index) => {
+      {guessedWords.map((g, index) => {
         return (
           <p className="guess" key={g.id}>
             {g.guess}
@@ -14,4 +14,4 @@ function GuessHistory({ guessHistory }) {
   );
 }
 
-export default GuessHistory;
+export default GuessGrid;

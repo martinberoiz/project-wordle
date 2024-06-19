@@ -1,6 +1,6 @@
 import React from "react";
 
-function InputGuess({ guessHistory, setGuessHistory }) {
+function InputGuess({ guessedWords, setGuessedWords }) {
   [guess, setGuess] = React.useState("");
 
   return (
@@ -12,11 +12,11 @@ function InputGuess({ guessHistory, setGuessHistory }) {
           return;
         }
         setGuess("");
-        newHistory = [
-          ...guessHistory,
+        const newGuessedWords = [
+          ...guessedWords,
           { guess: guess, id: crypto.randomUUID() },
         ];
-        setGuessHistory(newHistory);
+        setGuessedWords(newGuessedWords);
       }}
     >
       <label htmlFor="guess-input">Enter guess:</label>
