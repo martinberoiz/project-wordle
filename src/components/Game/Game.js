@@ -4,6 +4,7 @@ import { sample, range } from "../../utils";
 import { WORDS } from "../../data";
 import InputGuess from "../InputGuess";
 import GuessGrid from "../GuessGrid";
+import FinalBanner from "../FinalBanner";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
 // Pick a random word on every pageload.
@@ -17,6 +18,24 @@ function Game() {
   });
   [guessedWords, setGuessedWords] = React.useState(initialGuesses);
   [numGuesses, setNumGuesses] = React.useState(0);
+
+  let inProgress = true;
+  let successStatus;
+  if (numGuesses == NUM_OF_GUESSES_ALLOWED) {
+    if (guessedWords[numGuesses - 1].word === answer) {
+      inProgress = false;
+      successStatus = true;
+    } else {
+      inProgress = false;
+      successStatus = false;
+    }
+  } else if (numGuesses > 0) {
+    if (guessedWords[numGuesses - 1].word === answer) {
+      inProgress = false;
+      successStatus = true;
+    }
+  }
+
   return (
     <>
       <GuessGrid guessedWords={guessedWords} answer={answer} />
@@ -25,6 +44,13 @@ function Game() {
         setGuessedWords={setGuessedWords}
         numGuesses={numGuesses}
         setNumGuesses={setNumGuesses}
+        inProgress={inProgress}
+      />
+      <FinalBanner
+        inProgress={inProgress}
+        successStatus={successStatus}
+        numGuesses={numGuesses}
+        answer={answer}
       />
     </>
   );

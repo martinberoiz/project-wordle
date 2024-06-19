@@ -6,6 +6,7 @@ function InputGuess({
   setGuessedWords,
   numGuesses,
   setNumGuesses,
+  inProgress,
 }) {
   [guess, setGuess] = React.useState("");
 
@@ -38,6 +39,7 @@ function InputGuess({
           }
           setGuess(e.target.value.toUpperCase());
         }}
+        disabled={!inProgress}
       />
     </form>
   );
