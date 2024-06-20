@@ -5,6 +5,7 @@ import { WORDS } from "../../data";
 import InputGuess from "../InputGuess";
 import GuessGrid from "../GuessGrid";
 import FinalBanner from "../FinalBanner";
+import GuessedKeys from "../GuessedKeys";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
 // Pick a random word on every pageload.
@@ -46,6 +47,7 @@ function Game() {
         setNumGuesses={setNumGuesses}
         inProgress={inProgress}
       />
+      <GuessedKeys guessedWords={guessedWords} answer={answer} />
       <FinalBanner
         inProgress={inProgress}
         successStatus={successStatus}
