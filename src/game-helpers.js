@@ -53,3 +53,24 @@ export function checkGuess(guess, answer) {
 
   return result;
 }
+
+// This will return the state of the keyboard keys
+// The keyboard keys are painted with "inanswer" class (yellow)
+// if the letter is in the answer
+// and "notinanswer" class (dark gray) if not.
+export function classKeyboardKeys(words, answer) {
+  if (words.length == 0) {
+    return {};
+  }
+  const guessedKeys = new Set(words.map(({ word }) => word.split("")).flat());
+  const guessChars = [...guessedKeys];
+  const answerChars = answer.split('');
+
+  const solution = {};
+
+  for (let char of guessChars) {
+    solution[char] = answerChars.includes(char) ? "inanswer" : "notinanswer";
+  }
+
+  return solution;
+}
