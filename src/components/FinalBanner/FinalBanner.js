@@ -1,10 +1,14 @@
 import React from "react";
+import RestartButton from "../RestartButton";
 
 function FinalBanner({
-  inProgress = true,
-  successStatus = false,
+  inProgress,
+  successStatus,
   numGuesses,
+  setNumGuesses,
   answer,
+  setAnswer,
+  setGuessedWords,
 }) {
   if (inProgress) {
     return;
@@ -15,6 +19,11 @@ function FinalBanner({
           <strong>Congratulations!</strong> Got it in{" "}
           <strong>{numGuesses} guesses</strong>.
         </p>
+        <RestartButton
+          setNumGuesses={setNumGuesses}
+          setAnswer={setAnswer}
+          setGuessedWords={setGuessedWords}
+        />
       </div>
     );
   } else {
@@ -23,6 +32,11 @@ function FinalBanner({
         <p>
           Sorry, the correct answer is <strong>{answer.toUpperCase()}</strong>.
         </p>
+        <RestartButton
+          setNumGuesses={setNumGuesses}
+          setAnswer={setAnswer}
+          setGuessedWords={setGuessedWords}
+        />
       </div>
     );
   }

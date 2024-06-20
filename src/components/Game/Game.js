@@ -8,10 +8,6 @@ import FinalBanner from "../FinalBanner";
 import GuessedKeys from "../GuessedKeys";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
-// Pick a random word on every pageload.
-const answer = sample(WORDS);
-// To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
 
 function Game() {
   const initialGuesses = range(NUM_OF_GUESSES_ALLOWED).map((i) => {
@@ -19,6 +15,8 @@ function Game() {
   });
   [guessedWords, setGuessedWords] = React.useState(initialGuesses);
   [numGuesses, setNumGuesses] = React.useState(0);
+  [answer, setAnswer] = React.useState(() => sample(WORDS));
+  console.info({ answer });
 
   let inProgress = true;
   let successStatus;
@@ -52,7 +50,10 @@ function Game() {
         inProgress={inProgress}
         successStatus={successStatus}
         numGuesses={numGuesses}
+        setNumGuesses={setNumGuesses}
         answer={answer}
+        setAnswer={setAnswer}
+        setGuessedWords={setGuessedWords}
       />
     </>
   );
